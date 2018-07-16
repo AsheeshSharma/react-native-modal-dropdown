@@ -93,6 +93,7 @@ export default class ModalDropdown extends Component {
     const {defaultIndex, defaultValue, options} = nextProps;
     buttonText = this._nextValue == null ? buttonText : this._nextValue;
     selectedIndex = this._nextIndex == null ? selectedIndex : this._nextIndex;
+    // console.warn(defaultIndex, selectedIndex, this._nextIndex, this._nextValue)
     if (selectedIndex < 0) {
       selectedIndex = defaultIndex;
       if (selectedIndex < 0) {
@@ -101,6 +102,16 @@ export default class ModalDropdown extends Component {
     }
     this._nextValue = null;
     this._nextIndex = null;
+
+    console.log('hello', nextProps.defaultValue, this.props.defaultValue)
+
+    if(this.props.defaultValue != nextProps.defaultValue) {
+      buttonText = nextProps.defaultValue
+    }
+
+    if(this.props.defaultIndex != nextProps.defaultIndex) {
+      selectedIndex = nextProps.defaultIndex
+    }
 
     this.setState({
       loading: !options,
@@ -165,7 +176,7 @@ export default class ModalDropdown extends Component {
   _renderButton() {
     const {disabled, accessible, children, textStyle} = this.props;
     const {buttonText} = this.state;
-
+    console.log(buttonText, 'inside', children)
     return (
       <TouchableOpacity ref={button => this._button = button}
                         disabled={disabled}
