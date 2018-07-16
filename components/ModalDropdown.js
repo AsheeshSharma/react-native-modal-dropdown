@@ -318,7 +318,8 @@ export default class ModalDropdown extends Component {
     const {renderRow, dropdownTextStyle, dropdownTextHighlightStyle, accessible} = this.props;
     const {selectedIndex} = this.state;
     const key = `row_${rowID}`;
-    const highlighted = rowID == selectedIndex;
+    // console.warn(rowID, selectedIndex)
+    const highlighted = false;
     const row = !renderRow ?
       (<Text style={[
         styles.rowText,
